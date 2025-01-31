@@ -1,0 +1,27 @@
+COMANDOS
+-crear proyecto
+    - composer create-project symfony/skeleton backend-api
+- activar server
+    - symfony server:start
+- para crear controladores
+    - php bin/console make:controller
+- para crean entidades
+    - php bin/console make:task
+- instalar componente de make
+	- composer require symfony/maker-bundle --dev
+- instalar para la base de datos
+	- composer require symfony/orm-pack
+- para enviar los datos a las BD
+    - php bin/console doctrine:schema:update --force
+- para actualizar base de datos
+    - php bin/console make:migration
+    - php bin/console doctrine:migrations:migrate
+-instalar el validador de composer
+    -  composer require form validator
+- para crear form
+    - php bin/console make:form
+
+- instalar para realizar renderisado
+    - composer require symfony/twig-bundle
+- para las etiquetas asset
+    - composer require symfony/asset

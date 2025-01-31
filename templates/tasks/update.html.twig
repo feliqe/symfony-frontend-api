@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Actualizar
+{% endblock %}
+
+{% block body %}
+  <div class="row mt-5 mb-3">
+    <div class="col">
+      <h1>Actualizar Registro</h1>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{{ path('crud_show') }}">Volver</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Actualizar Registro</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+   {{ form_start(form, { 'action': path('crud_update', { 'id': form.vars.value.id }), 'method': 'PUT', 'attr': { 'data-turbo': 'false' } }) }}
+    <div class="row">
+        <div class="col-12 col-md-6">
+          <div class="form-group">{{ form_row(form.nombre) }}</div>
+          <div class="form-group">{{ form_row(form.descripcion) }}</div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="form-group">{{ form_row(form.fechaexpiracion) }}</div>
+          <div class="form-group">{{ form_row(form.estado) }}</div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="form-group">{{ form_row(form.prioridad) }}</div>
+          <div class="form-group">{{ form_row(form.responsable) }}</div>
+        </div>
+    </div>
+    <div class="col d-flex">
+      <button type="submit" class="btn btn-primary ms-auto">
+        Guardar
+        <i class="bi bi-floppy-fill" style="margin-left: 8px;"></i>
+      </button>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}

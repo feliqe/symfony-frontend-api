@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Mostrar
+{% endblock %}
+
+{% block body %}
+  <div class="row mt-5 mb-3">
+    <div class="col d-flex align-items-center">
+      <h1>Mostrar Registros</h1>
+      <a href="{{ path('crud_register') }}" class="btn btn-primary ms-auto">
+        Agregar
+        <i class="bi bi-plus-circle" style="margin-left: 8px;"></i>
+      </a>
+    </div>
+  </div>
+  <div class="table-responsive mt-5">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th class="text-center">#</th>
+          <th class="text-center">Nombre</th>
+          <th class="text-center">Descripcion</th>
+          <th class="text-center">Fecha de expiracion</th>
+          <th class="text-center">Estado</th>
+          <th class="text-center">Prioridad</th>
+          <th class="text-center">Responsable</th>
+          <th class="text-center">Funciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if (tasks|length) > 0 %}
+          {% for item in tasks %}
+            <tr>
+              <td class="text-center">{{ item.id }}</td>
+              <td class="text-center">{{ item.nombre }}</td>
+              <td class="text-center">{{ item.descripcion }}</td>
+              <td class="text-center">{{ item.fechaexpiracion|join(', ')|slice(0, 10)}}</td>
+              <td class="text-center">{{ item.estado }}</td>
+              <td class="text-center">{{ item.prioridad }}</td>
+              <td class="text-center">{{ item.responsable }}</td>
+              <td class="text-center">
+                <a href="{{ path('crud_edit', { id: item.id }) }}" class="btn"><i class="bi bi-pencil-square"></i></a>
+                <a href="javastript:void(0)" class="btn" style="color: red;" onclick="confirmarSweet('¿Estás seguro de eliminar el registro?','{{ path('crud_delete', { id: item.id }) }}' )"><i class="bi bi-trash"></i></a>
+              </td>
+            </tr>
+          {% endfor %}
+        {% else %}
+          <tr>
+            <td colspan="6" class="text-center">Sin registros</td>
+          </tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
